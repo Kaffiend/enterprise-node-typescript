@@ -25,5 +25,5 @@ app.use(function (err: Error, req: express.Request, res: express.Response, next:
 });
 
 app.listen(3000, function () {
-    logger.info('Example app listening on port 3000!');
+    console.info('Example app listening on port 3000!');
 });

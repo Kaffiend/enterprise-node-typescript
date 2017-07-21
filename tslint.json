@@ -1,18 +1,40 @@
 {
-  "extends": "tslint:recommended",
-  "formatter": "json",
   "rules": {
+    "class-name": true,
+    "curly": false,
+    "eofline": true,
+    "indent": [true, "spaces"],
+    "max-line-length": [true, 600],
+    "member-ordering": [true,
+      "public-before-private",
+      "static-before-instance",
+      "variables-before-functions"
+    ],
+    "no-arg": true,
+    "no-construct": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-trailing-whitespace": false,
+    "no-unused-expression": true,
+    "no-use-before-declare": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
     "quotemark": [
       true,
       "single"
     ],
-    "no-var-requires": false,
-    "interface-name": [
+    "semicolon": [
       true,
-      "never-prefix"
+      "always"
     ],
-    "max-line-length": [true, 160],
-    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
-    "object-literal-sort-keys": false
+    "trailing-comma": true,
+    "triple-equals": true,
+    "variable-name": false
   }
 }
