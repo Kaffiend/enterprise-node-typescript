@@ -1,7 +1,7 @@
-import {injectable} from 'inversify';
-import {mongoDatabase, AddressDTO, AddressMongoSchema, AddressDbSchema} from '../model/AddressSchema';
-import {logger} from '../util/Logger';
-import {createConnection, Connection, Repository, ConnectionOptions} from 'typeorm';
+import { injectable } from 'inversify';
+import { mongoDatabase, AddressDTO, AddressMongoSchema } from '../model/AddressSchema';
+import 'reflect-metadata';
+import { logger } from '../util/Logger';
 
 export interface AddressRepository {
     findAll(): Promise<Array<AddressDTO>>;
@@ -11,7 +11,7 @@ export interface AddressRepository {
 }
 
 @injectable()
-export class AddressRepositoryImplMongo implements AddressRepository {
+export class AddressRepository implements AddressRepository {
     public async findAll(): Promise<Array<AddressDTO>> {
         const addressDTOs = await mongoDatabase.connect().then(() => mongoDatabase.Addresses.find());
         return addressDTOs.toArray();

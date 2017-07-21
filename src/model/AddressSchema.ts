@@ -1,5 +1,4 @@
-import {Core, Model, Instance, Collection, Index, Property, ObjectID} from 'iridium';
-import {Table, Column, PrimaryColumn} from 'typeorm';
+import { Core, Model, Instance, Collection, Index, Property, ObjectID } from 'iridium';
 
 export interface AddressDTO {
     _id?: string;
@@ -14,7 +13,7 @@ export interface AddressDTO {
 /**
  * Iridium config
  */
-@Index({name: 1})
+@Index({ name: 1 })
 @Collection('addresses')
 export class AddressMongoSchema extends Instance<AddressDTO, AddressMongoSchema> implements AddressDTO {
     @ObjectID
@@ -38,29 +37,7 @@ class AddressDatabase extends Core {
     public Addresses = new Model<AddressDTO, AddressMongoSchema>(this, AddressMongoSchema);
 }
 
-export const mongoDatabase = new AddressDatabase({database: 'test_db'});
+export const mongoDatabase = new AddressDatabase({ database: 'test_db' });
 
 // delete everything from mongo
 // database.connect().then(() => database.Addresses.remove()).then(() => database.Addresses.get()).then(() => database.close());
-
-/**
- * TypeORM Schema Config
- */
-@Table('address')
-export class AddressDbSchema implements AddressDTO {
-    @PrimaryColumn()
-    // tslint:disable-next-line:variable-name
-    public _id?: string;
-    @Column()
-    public address1: string;
-    @Column()
-    public address2?: string;
-    @Column()
-    public city: string;
-    @Column()
-    public state: string;
-    @Column()
-    public zip: string;
-    @Column()
-    public country: string;
-}

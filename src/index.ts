@@ -2,10 +2,10 @@ import * as express from 'express';
 import * as http from 'http';
 import { Server } from 'http';
 import * as bodyParser from 'body-parser';
-import TYPES from './types';
+import { TYPES } from './types';
 import container from './inversify.config';
-import {logger} from './util/Logger';
-import {RegistrableController} from './controller/RegisterableController';
+import { logger } from './util/Logger';
+import { RegistrableController } from './controller/RegisterableController';
 import { RegisterableSocket } from './socket/RegisterableSocket';
 import * as io from 'socket.io';
 

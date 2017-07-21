@@ -1,7 +1,7 @@
 import {Container} from 'inversify';
-import TYPES from './types';
+import { TYPES } from './types';
 import {AddressService, AddressServiceImpl} from './service/AddressService';
-import {AddressRepository, AddressRepositoryImplMongo } from './repository/AddressRepository';
+import { AddressRepository } from './repository/AddressRepository';
 import {AddressController} from './controller/AddressController';
 import {RegistrableController} from './controller/RegisterableController';
 import { RegisterableSocket } from './socket/RegisterableSocket';
@@ -13,6 +13,6 @@ const container = new Container();
 container.bind<RegistrableController>(TYPES.Controller).to(AddressController);
 container.bind<RegisterableSocket>(TYPES.Socket).to(ConfigSocket);
 container.bind<AddressService>(TYPES.AddressService).to(AddressServiceImpl);
-container.bind<AddressRepository>(TYPES.AddressRepository).to(AddressRepositoryImplMongo);
+container.bind<AddressRepository>(TYPES.AddressRepository).to(AddressRepository);
 
 export default container;

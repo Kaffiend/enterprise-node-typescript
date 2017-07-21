@@ -1,9 +1,9 @@
-import {injectable, inject} from 'inversify';
-import {Address} from '../model/Address';
-import {AddressRepository} from '../repository/AddressRepository';
-import TYPES from '../types';
+import { injectable, inject } from 'inversify';
+import { Address } from '../model/Address';
+import { AddressRepository } from '../repository/AddressRepository';
+import { TYPES } from '../types';
 import 'reflect-metadata';
-import {AddressDTO} from '../model/AddressSchema';
+import { AddressDTO } from '../model/AddressSchema';
 import * as _ from 'lodash';
 
 export interface AddressService {

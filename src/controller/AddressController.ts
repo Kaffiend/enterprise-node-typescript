@@ -1,25 +1,25 @@
 import * as express from 'express';
-import {injectable, inject} from 'inversify';
-import TYPES from '../types';
-import {AddressService} from '../service/AddressService';
-import {Address} from '../model/Address';
-import {RegistrableController} from './RegisterableController';
+import { injectable, inject } from 'inversify';
+import { TYPES } from '../types';
+import { AddressService } from '../service/AddressService';
+import { Address } from '../model/Address';
+import { RegistrableController } from './RegisterableController';
 
 @injectable()
 export class AddressController implements RegistrableController {
     private addressService: AddressService;
 
-    constructor(@inject(TYPES.AddressService) addressService: AddressService) {
+    constructor( @inject(TYPES.AddressService) addressService: AddressService) {
         this.addressService = addressService;
     }
 
     public register(app: express.Application): void {
         app.route('/address')
-            .get(async(req: express.Request, res: express.Response, next: express.NextFunction) => {
+            .get(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
                 const addresses = await this.addressService.getAddresses().catch(err => next(err));
                 res.json(addresses);
             })
-            .post(async(req: express.Request, res: express.Response, next: express.NextFunction) => {
+            .post(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
                 const address = new Address(
                     req.body.address1,
                     req.body.address2,
@@ -33,11 +33,11 @@ export class AddressController implements RegistrableController {
             });
 
         app.route('/address/:id')
-            .get(async(req: express.Request, res: express.Response, next: express.NextFunction) => {
-                const addresses = await this.addressService.getAddress(<string> req.params.id).catch(err => next(err));
+            .get(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+                const addresses = await this.addressService.getAddress(<string>req.params.id).catch(err => next(err));
                 res.json(addresses);
             })
-            .put(async(req: express.Request, res: express.Response, next: express.NextFunction) => {
+            .put(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
                 const address = new Address(
                     req.body.address1,
                     req.body.address2,
