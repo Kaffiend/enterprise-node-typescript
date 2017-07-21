@@ -14,7 +14,7 @@ export class AddressController implements RegistrableController {
     }
 
     public register(app: express.Application): void {
-        app.route('/')
+        app.route('/address')
             .get(async(req: express.Request, res: express.Response, next: express.NextFunction) => {
                 const addresses = await this.addressService.getAddresses().catch(err => next(err));
                 res.json(addresses);
@@ -32,7 +32,7 @@ export class AddressController implements RegistrableController {
                 res.json(createdAddress);
             });
 
-        app.route('/:id')
+        app.route('/address/:id')
             .get(async(req: express.Request, res: express.Response, next: express.NextFunction) => {
                 const addresses = await this.addressService.getAddress(<string> req.params.id).catch(err => next(err));
                 res.json(addresses);
