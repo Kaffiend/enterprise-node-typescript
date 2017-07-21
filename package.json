@@ -10,8 +10,11 @@
     "lint": "./node_modules/.bin/tslint './src/**/*.ts' -t verbose --force --type-check --project ./tsconfig.json",
     "test": "ts-node ./node_modules/.bin/tape './test/**/*.spec.ts' | tap-spec"
   },
-  "author": "Ian Mackie",
-  "license": "CSS",
+  "author": "Tim Whitney",
+  "contributors": [
+    "Ian Mackie"
+  ],
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
